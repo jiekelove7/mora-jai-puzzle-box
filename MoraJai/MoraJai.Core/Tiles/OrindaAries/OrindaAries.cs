@@ -2,7 +2,7 @@
 
 public static class OrindaAries
 {
-    public static TileType[,] OnClick(int x, int y, TileType[,] board)
+    public static TileType[,] OnClick(Board board, int x, int y)
     {
         throw new NotImplementedException();
     }

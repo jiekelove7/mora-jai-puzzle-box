@@ -11,6 +11,10 @@ public class Board
     public Board(int size, TileType[,] initialBoard = null)
     {
         _board = new TileType[size, size];
+        
+        _board[0, 0] = TileType.MoraJai; // [ 0, 0]
+        _board[0, 1] = TileType.None; // [ 0, 1]
+        _board[1, 0] = TileType.None; // [ 0, 2]
 
         if (initialBoard != null)
         {
@@ -23,7 +27,7 @@ public class Board
     public int GetSize() => _board.GetLength(0);
 
     public bool IsInBound(int x, int y) =>
-        x >= 0 || y >= 0 || x < GetSize() || y < GetSize();
+        x >= 0 && y >= 0 && x < GetSize() && y < GetSize();
 
     public TileCoordAndType GetTile(int x, int y)
     {
@@ -81,20 +85,20 @@ public class Board
         }
         return adjacentTiles;
     }
-    
-    public TileType[,] SetTile(int x, int y, TileType tile)
+
+    public void SetTile(int x, int y, TileType tile)
     {
         if (!IsInBound(x, y))
         {
-            return _board;
+            return;
         }
-        
+
         _board[x, y] = tile;
-        return _board;
     }
-    
-    public TileType[,] SetTile(TileCoordAndType target, TileType tile) =>
+
+    public void SetTile(TileCoordAndType target, TileType tile)  =>
         SetTile(target.X, target.Y, tile);
+        
 
     public TileType[,] OnTileClick(int x, int y)
     {
@@ -106,8 +110,8 @@ public class Board
         var newBoard = _board[x, y] switch
         {
             TileType.None => _board,
-            TileType.MoraJai => MoraJaiTile.OnClick(x, y, _board),
-            TileType.OrindaAries => OrindaAries.OnClick(x, y, _board),
+            TileType.MoraJai => MoraJaiTile.OnClick(this, x, y),
+            TileType.OrindaAries => OrindaAries.OnClick(this, x, y),
             _ => _board
         };
 

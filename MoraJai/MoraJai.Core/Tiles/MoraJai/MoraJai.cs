@@ -2,8 +2,24 @@
 
 public static class MoraJai
 {
-    public static TileType[,] OnClick(int x, int y, TileType[,] board)
+    public static TileType[,] OnClick(Board board, int x, int y)
     {
-        throw new NotImplementedException();
+        var adjacentTiles = board.GetAdjacentTiles(x, y);
+        adjacentTiles.Add(board.GetTile(x, y));
+        foreach (var tile in adjacentTiles)
+        {
+            switch (tile.TileType)
+            {
+                case TileType.None:
+                    board.SetTile(tile.X, tile.Y, TileType.MoraJai);
+                    break;
+                case TileType.MoraJai:
+                    board.SetTile(tile.X, tile.Y, TileType.None);
+                    break;
+                default:
+                    break;
+            }
+        }
+        return board.GetBoard();
     }
 }

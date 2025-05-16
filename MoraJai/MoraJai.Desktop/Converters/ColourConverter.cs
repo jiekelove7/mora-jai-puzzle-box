@@ -14,16 +14,16 @@ public class ColourConverter : IValueConverter
         {
             return tileType switch
             {
-                TileType.None => new SolidColorBrush(Colors.Gray),
-                TileType.MoraJai => new SolidColorBrush(Colors.Blue),
-                TileType.OrindaAries => new SolidColorBrush(Colors.Green),
+                TileType.None => new SolidColorBrush(Colors.DarkGray),
+                TileType.MoraJai => new SolidColorBrush(Colors.White),
+                TileType.OrindaAries => new SolidColorBrush(Colors.Black),
                 TileType.FennAries => new SolidColorBrush(Colors.Red),
-                TileType.Nuance => new SolidColorBrush(Colors.Purple),
+                TileType.Nuance => new SolidColorBrush(Colors.Green),
                 TileType.Corarica => new SolidColorBrush(Colors.Orange),
-                TileType.Verra => new SolidColorBrush(Colors.Yellow),
-                TileType.ArchAries => new SolidColorBrush(Colors.Cyan),
-                TileType.Eraja => new SolidColorBrush(Colors.Magenta),
-                _ => new SolidColorBrush(Colors.DarkGray)
+                TileType.Verra => new SolidColorBrush(Colors.Pink),
+                TileType.ArchAries => new SolidColorBrush(Colors.Yellow),
+                TileType.Eraja => new SolidColorBrush(Colors.Purple),
+                _ => new SolidColorBrush(Colors.Gray)
             };
         }
         return new SolidColorBrush(Colors.DarkGray);

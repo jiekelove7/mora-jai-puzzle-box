@@ -1,3 +1,4 @@
+<!-- MoraJai/MoraJai.Desktop/Views/MainWindow.axaml -->
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:MoraJai.ViewModels"
@@ -38,34 +39,22 @@
                    FontSize="24"
                    Margin="0,0,0,20"/>
         
-        <ItemsControl Grid.Row="1" 
+        <ItemsControl Grid.Row="1"
                       ItemsSource="{Binding Tiles}"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid />
+                    <UniformGrid Rows="3" Columns="3"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
-            
             <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <ItemsControl ItemsSource="{Binding}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate x:DataType="vm:TileViewModel">
-                                <Button Command="{Binding ClickCommand}"
-                                        Background="{Binding TileType, Converter={StaticResource ColourConverter}}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                <DataTemplate x:DataType="vm:TileViewModel">
+                    <Button Command="{Binding ClickCommand}" 
+                            Background="{Binding TileType, Converter={StaticResource ColourConverter}}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+
     </Grid>
 </Window>
