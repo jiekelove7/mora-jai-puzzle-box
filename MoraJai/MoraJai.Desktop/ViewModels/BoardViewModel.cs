@@ -1,15 +1,33 @@
 ﻿using System.Collections.ObjectModel;
 using MoraJai.Core;
+using ReactiveUI;
 
 namespace MoraJai.ViewModels;
 
 public class BoardViewModel : ViewModelBase
 {
-    public ObservableCollection<ObservableCollection<TileViewModel>> Tiles { get; }
+    private ObservableCollection<ObservableCollection<TileViewModel>> _tiles;
+    public ObservableCollection<ObservableCollection<TileViewModel>> Tiles
+    {
+        get => _tiles;
+        set => this.RaiseAndSetIfChanged(ref _tiles, value);
+    }
+
+    public BoardViewModel()
+    {
+        // Design-time constructor
+        var board = new Board(3);
+        InitializeBoard(board);
+    }
 
     public BoardViewModel(Board board)
     {
-        Tiles = [];
+        InitializeBoard(board);
+    }
+
+    private void InitializeBoard(Board board)
+    {
+        Tiles = new ObservableCollection<ObservableCollection<TileViewModel>>();
 
         for (var row = 0; row < board.GetSize(); row++)
         {
@@ -29,7 +47,7 @@ public class BoardViewModel : ViewModelBase
         {
             foreach (var tile in row)
             {
-                /*tile.Refresh();*/
+                tile.RefreshTileType();
             }
         }
     }

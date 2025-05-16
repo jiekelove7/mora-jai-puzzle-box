@@ -1,0 +1,13 @@
+﻿<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:MoraJai"
+             xmlns:converters="using:MoraJai.Converters"
+             x:Class="MoraJai.App">
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+
+    <Application.Resources>
+        <converters:ColourConverter x:Key="ColourConverter"/>
+    </Application.Resources>
+</Application>
