@@ -1,4 +1,5 @@
 ﻿using MoraJai.Core.Tiles;
+using MoraJai.Core.Tiles.FennAries;
 using MoraJaiTile = MoraJai.Core.Tiles.MoraJai.MoraJai;
 using MoraJai.Core.Tiles.OrindaAries;
 
@@ -15,6 +16,10 @@ public class Board
         _board[0, 0] = TileType.MoraJai; // [ 0, 0]
         _board[0, 1] = TileType.None; // [ 0, 1]
         _board[1, 0] = TileType.None; // [ 0, 2]
+        _board[0, 2] = TileType.OrindaAries; // [ 0, 3]
+        _board[1, 2] = TileType.OrindaAries; // [ 0, 3]
+        _board[2, 2] = TileType.OrindaAries; // [ 0, 3]
+        _board[1, 1] = TileType.FennAries; // [ 0, 4]
 
         if (initialBoard != null)
         {
@@ -112,6 +117,7 @@ public class Board
             TileType.None => _board,
             TileType.MoraJai => MoraJaiTile.OnClick(this, x, y),
             TileType.OrindaAries => OrindaAries.OnClick(this, x, y),
+            TileType.FennAries => FennAries.OnClick(this, x, y),
             _ => _board
         };
 

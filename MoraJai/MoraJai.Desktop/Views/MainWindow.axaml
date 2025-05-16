@@ -9,12 +9,8 @@
         x:DataType="vm:BoardViewModel"
         Title="Mora Jai Puzzle Box"
         Width="600" Height="600"
+        Background="#444546"
         WindowStartupLocation="CenterScreen">
-
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the designer -->
-        <vm:BoardViewModel/>
-    </Design.DataContext>
 
     <Window.Styles>
         <Style Selector="Button">

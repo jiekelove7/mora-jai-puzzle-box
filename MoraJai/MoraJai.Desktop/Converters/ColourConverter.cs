@@ -14,7 +14,7 @@ public class ColourConverter : IValueConverter
         {
             return tileType switch
             {
-                TileType.None => new SolidColorBrush(Colors.DarkGray),
+                TileType.None => new SolidColorBrush(Colors.LightSlateGray),
                 TileType.MoraJai => new SolidColorBrush(Colors.White),
                 TileType.OrindaAries => new SolidColorBrush(Colors.Black),
                 TileType.FennAries => new SolidColorBrush(Colors.Red),
