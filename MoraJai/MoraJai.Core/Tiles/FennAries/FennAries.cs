@@ -1,6 +1,6 @@
 ﻿namespace MoraJai.Core.Tiles.FennAries;
 
-public class FennAries
+public static class FennAries
 {
     public static TileType[,] OnClick(Board board, int x, int y)
     {

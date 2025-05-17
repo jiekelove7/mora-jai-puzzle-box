@@ -6,6 +6,7 @@ public static class MoraJai
     {
         var adjacentTiles = board.GetAdjacentTiles(x, y);
         adjacentTiles.Add(board.GetTile(x, y));
+        
         foreach (var tile in adjacentTiles)
         {
             switch (tile.TileType)

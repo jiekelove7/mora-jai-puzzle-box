@@ -23,6 +23,7 @@ public class ColourConverter : IValueConverter
                 TileType.Verra => new SolidColorBrush(Colors.Pink),
                 TileType.ArchAries => new SolidColorBrush(Colors.Yellow),
                 TileType.Eraja => new SolidColorBrush(Colors.Purple),
+                TileType.BluePrince => new SolidColorBrush(Colors.CornflowerBlue),
                 _ => new SolidColorBrush(Colors.Gray)
             };
         }

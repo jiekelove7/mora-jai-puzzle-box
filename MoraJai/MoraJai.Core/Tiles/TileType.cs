@@ -10,5 +10,6 @@ public enum TileType
     Corarica = 5,
     Verra = 6,
     ArchAries = 7,
-    Eraja = 8
+    Eraja = 8,
+    BluePrince = 9
 }
