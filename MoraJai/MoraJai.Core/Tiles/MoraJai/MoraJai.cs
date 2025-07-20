@@ -2,7 +2,7 @@
 
 public static class MoraJai
 {
-    public static TileType[,] OnClick(Board board, int x, int y)
+    public static TileType[,] OnClick(Board board, int x, int y, TileType selfType = TileType.MoraJai)
     {
         var adjacentTiles = board.GetAdjacentTiles(x, y);
         adjacentTiles.Add(board.GetTile(x, y));
@@ -12,7 +12,7 @@ public static class MoraJai
             switch (tile.TileType)
             {
                 case TileType.None:
-                    board.SetTile(tile.X, tile.Y, TileType.MoraJai);
+                    board.SetTile(tile.X, tile.Y, selfType);
                     break;
                 case TileType.MoraJai:
                     board.SetTile(tile.X, tile.Y, TileType.None);

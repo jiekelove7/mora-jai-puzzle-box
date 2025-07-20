@@ -2,7 +2,7 @@
 
 public static class FennAries
 {
-    public static TileType[,] OnClick(Board board, int x, int y)
+    public static TileType[,] OnClick(Board board, int x, int y, TileType selfType = TileType.FennAries)
     {
         for (var i = 0; i < board.GetSize(); i++)
         {
@@ -14,7 +14,7 @@ public static class FennAries
                         board.SetTile(i, j, TileType.OrindaAries);
                         break;
                     case TileType.OrindaAries:
-                        board.SetTile(i, j, TileType.FennAries);
+                        board.SetTile(i, j, selfType);
                         break;
                     default:
                         break;
