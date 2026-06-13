@@ -15,7 +15,7 @@ public class GameController : ControllerBase
     [HttpGet("Board")]
     public async Task<ActionResult<TileType[,]>> GetBoard()
     {
-        var board = new Board(3).GetBoard();
+        var board = new Board().GetBoard();
         var result = ArrayConverter.ToJagged(board);
         return Ok(result);
     }

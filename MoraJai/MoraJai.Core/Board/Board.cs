@@ -12,26 +12,33 @@ namespace MoraJai.Core;
 
 public class Board
 {
-    private TileType[,] _board;
+    private readonly TileType[,] _board;
+    private TileType _NW;
+    private TileType _NE;
+    private TileType _SW;
+    private TileType _SE;
 
-    public Board(int size, TileType[,] initialBoard = null)
+    public Board(TileType[,] initialBoard, TileType NW, TileType NE, TileType SW, TileType SE)
     {
-        _board = new TileType[size, size];
-        
-        _board[0, 0] = TileType.MoraJai;
-        _board[0, 1] = TileType.Nuance;
-        _board[0, 2] = TileType.Eraja;
-        _board[1, 0] = TileType.Corarica;
-        _board[1, 1] = TileType.Verra;
-        _board[1, 2] = TileType.OrindaAries;
-        _board[2, 0] = TileType.MoraJai;
-        _board[2, 1] = TileType.BluePrince;
-        _board[2, 2] = TileType.ArchAries;
+        _board = initialBoard;
+        _NW = NW;
+        _NE = NE;
+        _SW = SW;
+        _SE = SE;
+    }
 
-        if (initialBoard != null)
+    public Board()
+    {
+        _board = new TileType[,]
         {
-            _board = initialBoard;
-        }
+            { TileType.None, TileType.Corarica, TileType.Corarica },
+            { TileType.ArchAries, TileType.Corarica, TileType.OrindaAries },
+            { TileType.BluePrince, TileType.BluePrince, TileType.Corarica }
+        };
+        _NW = TileType.Corarica;
+        _NE = TileType.Eraja;
+        _SW = TileType.OrindaAries;
+        _SE  = TileType.BluePrince;
     }
     
     public TileType[,] GetBoard() => _board;
@@ -187,6 +194,7 @@ public class Board
         }
 
         var selectedTile = _board[x, y];
+        var currentType = selectedTile;
         if (selectedTile == TileType.BluePrince)
         {
             var size = GetSize();
@@ -201,9 +209,9 @@ public class Board
         var newBoard = selectedTile switch
         {
             TileType.None => _board,
-            TileType.MoraJai => MoraJaiTile.OnClick(this, x, y),
+            TileType.MoraJai => MoraJaiTile.OnClick(this, x, y, currentType),
             TileType.OrindaAries => OrindaAries.OnClick(this, x, y),
-            TileType.FennAries => FennAries.OnClick(this, x, y),
+            TileType.FennAries => FennAries.OnClick(this, x, y, currentType),
             TileType.Nuance => Nuance.OnClick(this, x, y),
             TileType.Corarica => Corarica.OnClick(this, x, y),
             TileType.Verra => Verra.OnClick(this, x, y),
